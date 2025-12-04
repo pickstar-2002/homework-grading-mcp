@@ -1,0 +1,57 @@
+{
+  "name": "@pickstar-2002/homework-grading-mcp",
+  "version": "3.5.0",
+  "description": "📝 AI驱动的作业批改MCP服务端 - 基于Qwen3-VL多模态模型的智能作业批改服务",
+  "main": "dist/index.js",
+  "bin": {
+    "homework-grading-mcp": "dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "clean": "rd /s /q dist 2>nul || del /q dist 2>nul || exit 0",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "homework-grading",
+    "ai",
+    "qwen-vl",
+    "modelscope",
+    "multimodal",
+    "education",
+    "typescript"
+  ],
+  "author": "pickstar-2002",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pickstar-2002/homework-grading-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pickstar-2002/homework-grading-mcp/issues"
+  },
+  "homepage": "https://github.com/pickstar-2002/homework-grading-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "openai": "^4.28.4",
+    "dotenv": "^16.4.5",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ]
+}
