@@ -85,8 +85,8 @@ class HomeworkGradingMCPServer {
   async run(): Promise<void> {
     try {
       // 确保立即输出到stderr
-      console.error(`🚀 启动作业批改MCP服务器 v${CONFIG.server.version}`);
-      console.error(`📋 服务器名称: ${CONFIG.server.name}`);
+      console.error(`🚀 启动作业批改MCP v${CONFIG.server.version}`);
+      console.error(`📋 服务名称: ${CONFIG.server.name}`);
       
       // 检查API密钥配置
       if (!CONFIG.model.apiKey || CONFIG.model.apiKey === 'demo-key') {
@@ -106,7 +106,7 @@ class HomeworkGradingMCPServer {
           }
         } catch (error) {
           console.error('⚠️  模型服务初始化失败:', error instanceof Error ? error.message : '未知错误');
-          console.error('🔧 服务器将继续运行，但批改功能可能受限');
+          console.error('🔧 服务将继续运行，但批改功能可能受限');
         }
       }
 
@@ -116,7 +116,7 @@ class HomeworkGradingMCPServer {
       // 连接服务器
       await this.server.connect(transport);
       
-      console.error('✅ MCP服务器启动成功，等待客户端连接...');
+      console.error('✅ MCP服务启动成功，等待客户端连接...');
       console.error('🔧 可用工具:');
       console.error('  • grade_homework - 智能批改作业（只需上传图片）');
       

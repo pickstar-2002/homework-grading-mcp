@@ -45,8 +45,6 @@ export class ToolHandler {
    */
   async handleGradeHomework(args: any): Promise<any> {
     try {
-      logger.info('收到作业批改请求');
-
       // 验证输入参数 - 支持Base64和URL
       const schema = z.union([
         z.object({ imageData: z.string().min(1, '图片数据不能为空') }),
@@ -59,17 +57,13 @@ export class ToolHandler {
       let imageData: string;
       
       if ('imageUrl' in validatedParams) {
-        logger.info('检测到URL方式，正在下载图片...');
         imageData = await downloadImageAsBase64(validatedParams.imageUrl);
-        logger.info('图片下载完成');
       } else {
-        logger.info('检测到Base64方式，正在验证图片...');
         const validation = validateBase64Image(validatedParams.imageData);
         if (!validation.isValid) {
           throw new Error(validation.error || '图片格式验证失败');
         }
         imageData = validatedParams.imageData;
-        logger.info(`Base64图片验证通过，格式: ${validation.format}`);
       }
 
       // 执行批改
@@ -78,8 +72,6 @@ export class ToolHandler {
         subject: '自动识别',
         studentName: '学生'
       });
-
-      logger.info('作业批改完成');
       
       // 构建统一格式的题目输出
       const questionsOutput = result.results.map((r, i) => {
@@ -111,7 +103,6 @@ ${result.overallFeedback}`,
       };
 
     } catch (error) {
-      logger.error('作业批改工具处理失败:', error);
       return {
         content: [
           {

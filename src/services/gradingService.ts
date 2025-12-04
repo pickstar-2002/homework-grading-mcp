@@ -23,21 +23,16 @@ export class GradingService {
    */
   async gradeHomework(params: GradeHomeworkParams): Promise<HomeworkGradingResponse> {
     try {
-      logger.info(`开始处理${params.studentName}的作业批改请求`);
-
       // 验证输入参数
       this.validateInput(params);
 
       // 获取图片数据（支持Base64和URL）
       let imageData: string;
       if ('imageUrl' in params && params.imageUrl) {
-        logger.info('检测到URL方式，正在下载图片...');
         const { downloadImageAsBase64 } = await import('../utils/imageDownloader.js');
         imageData = await downloadImageAsBase64(params.imageUrl);
-        logger.info('图片下载完成');
       } else if ('imageData' in params && params.imageData) {
         imageData = params.imageData;
-        logger.info('检测到Base64方式，使用已有图片数据');
       } else {
         throw new Error('未提供有效的图片数据');
       }
@@ -66,11 +61,9 @@ export class GradingService {
       // 构建批改响应
       const response = this.buildGradingResponse(submission.id, gradingResults);
 
-      logger.info(`作业批改完成，总分：${response.totalScore}/${response.maxTotalScore}`);
       return response;
 
     } catch (error) {
-      logger.error('作业批改失败:', error);
       throw new Error(`批改失败: ${error instanceof Error ? error.message : '未知错误'}`);
     }
   }
@@ -113,7 +106,6 @@ export class GradingService {
       const compressedImage = compressImageData(imageData, 1024);
       return compressedImage;
     } catch (error) {
-      logger.warn('图片处理失败，使用原图:', error);
       return imageData;
     }
   }

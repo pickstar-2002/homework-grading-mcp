@@ -50,25 +50,25 @@ export class Logger {
 
   debug(message: string, ...args: any[]): void {
     if (this.shouldLog(LogLevel.DEBUG)) {
-      console.debug(this.formatMessage('DEBUG', message, ...args));
+      console.error(this.formatMessage('DEBUG', message, ...args)); // 使用stderr避免干扰stdout
     }
   }
 
   info(message: string, ...args: any[]): void {
     if (this.shouldLog(LogLevel.INFO)) {
-      console.info(this.formatMessage('INFO', message, ...args));
+      console.error(this.formatMessage('INFO', message, ...args)); // 使用stderr避免干扰stdout
     }
   }
 
   warn(message: string, ...args: any[]): void {
     if (this.shouldLog(LogLevel.WARN)) {
-      console.warn(this.formatMessage('WARN', message, ...args));
+      console.error(this.formatMessage('WARN', message, ...args)); // 使用stderr避免干扰stdout
     }
   }
 
   error(message: string, ...args: any[]): void {
     if (this.shouldLog(LogLevel.ERROR)) {
-      console.error(this.formatMessage('ERROR', message, ...args));
+      console.error(this.formatMessage('ERROR', message, ...args)); // 使用stderr避免干扰stdout
     }
   }
 }
