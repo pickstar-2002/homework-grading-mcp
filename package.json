@@ -1,7 +1,7 @@
 {
   "name": "@pickstar-2002/homework-grading-mcp",
   "version": "3.5.0",
-  "description": "📝 AI驱动的作业批改MCP服务端 - 基于Qwen3-VL多模态模型的智能作业批改服务",
+  "description": "📝 AI驱动的作业批改MCP - 基于Qwen3-VL多模态模型的智能作业批改服务",
   "main": "dist/index.js",
   "bin": {
     "homework-grading-mcp": "dist/index.js"

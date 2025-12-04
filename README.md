@@ -1,4 +1,4 @@
-# 📝 作业批改 MCP 服务端
+# 📝 作业批改 MCP
 
 <div align="center">
 
@@ -14,7 +14,7 @@
 
 ## 🌟 项目简介
 
-**作业批改 MCP 服务端** 是一个基于 Model Context Protocol (MCP) 的智能作业批改服务，通过集成魔搭社区的 Qwen3-VL-235B-A22B-Instruct 多模态模型，实现对学生作业图片的智能识别和批改。
+**作业批改 MCP** 是一个基于 Model Context Protocol (MCP) 的智能作业批改服务，通过集成魔搭社区的 Qwen3-VL-235B-A22B-Instruct 多模态模型，实现对学生作业图片的智能识别和批改。
 
 ### ✨ 核心功能
 
